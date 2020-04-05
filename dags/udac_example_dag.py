@@ -29,7 +29,8 @@ with DAG(dag_name,
          default_args=default_args,
          description='Load and transform data in Redshift with Airflow',
          schedule_interval='@hourly',
-         max_active_runs=1) as dag:
+         max_active_runs=1
+         ) as dag:
 
     start_operator = DummyOperator(task_id='execution_started')
     schema_operator = DummyOperator(task_id='db_schema_created')
