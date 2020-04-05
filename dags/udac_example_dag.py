@@ -6,7 +6,7 @@ from airflow.operators.udacity_plugin import (
     StageToRedshiftOperator,
     LoadFactOperator,
     LoadDimensionOperator,
-    DataQualityOperator
+    DataQualityOperator,
 )
 from helpers import SqlQueries
 
