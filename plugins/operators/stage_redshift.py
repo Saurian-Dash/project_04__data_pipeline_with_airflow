@@ -40,7 +40,7 @@ class StageToRedshiftOperator(BaseOperator):
         self.log.info(
             f'Clearing data from Redshift table {self.schema}.{self.table}'
         )
-        redshift_hook.run(f'DELETE FROM {self.table};')
+        redshift_hook.run(f'TRUNCATE TABLE {self.schema}.{self.table}')
 
         self.log.info(f'Copying data from {self.s3_key} to Redshift')
 
