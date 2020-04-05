@@ -112,6 +112,25 @@ class SqlQueries:
         """
     )
 
+    artist_table_insert = (
+        """
+        INSERT INTO {schema}.{table} (
+            artistid,
+            name,
+            location,
+            latitude,
+            longitude
+        )
+        SELECT DISTINCT
+                artist_id,
+                artist_name,
+                artist_location,
+                artist_latitude,
+                artist_longitude
+        FROM staging_songs
+        """
+    )
+
     songplay_table_insert = (
         """
         INSERT INTO {schema}.{table} (
@@ -146,26 +165,6 @@ class SqlQueries:
         """
     )
 
-    user_table_insert = (
-        """
-        INSERT INTO {schema}.{table} (
-            userid,
-            first_name,
-            last_name,
-            gender,
-            level
-        )
-        SELECT DISTINCT
-                userid,
-                firstname,
-                lastname,
-                gender,
-                level
-        FROM staging_events
-        WHERE page='NextSong'
-        """
-    )
-
     song_table_insert = (
         """
         INSERT INTO {schema}.{table} (
@@ -181,25 +180,6 @@ class SqlQueries:
                 artist_id,
                 year,
                 duration
-        FROM staging_songs
-        """
-    )
-
-    artist_table_insert = (
-        """
-        INSERT INTO {schema}.{table} (
-            artistid,
-            name,
-            location,
-            latitude,
-            longitude
-        )
-        SELECT DISTINCT
-                artist_id,
-                artist_name,
-                artist_location,
-                artist_latitude,
-                artist_longitude
         FROM staging_songs
         """
     )
@@ -224,5 +204,25 @@ class SqlQueries:
                 extract(year from start_time),
                 extract(dayofweek from start_time)
         FROM songplays
+        """
+    )
+
+    user_table_insert = (
+        """
+        INSERT INTO {schema}.{table} (
+            userid,
+            first_name,
+            last_name,
+            gender,
+            level
+        )
+        SELECT DISTINCT
+                userid,
+                firstname,
+                lastname,
+                gender,
+                level
+        FROM staging_events
+        WHERE page='NextSong'
         """
     )
