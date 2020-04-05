@@ -10,7 +10,6 @@ from airflow.operators.udacity_plugin import (
 )
 from helpers import SqlQueries
 
-# airflow_start = /opt/airflow/start.sh
 
 default_args = {
     'owner': 'sparkify',
