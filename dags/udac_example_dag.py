@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.postgres_operator import PostgresOperator
@@ -8,6 +9,7 @@ from airflow.operators.udacity_plugin import (
     LoadDimensionOperator,
     DataQualityOperator,
 )
+
 from helpers import SqlQueries
 
 
